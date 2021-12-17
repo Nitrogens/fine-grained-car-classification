@@ -31,7 +31,7 @@ if __name__ == "__main__":
     os.makedirs(os.path.join(loadpath, f"evaluation"))
 
   print("Read data")
-  dataset = dataloader.txtload(labelpath, imagepath, 32, num_workers=4)
+  dataset = dataloader.txtload(labelpath, imagepath, 64, num_workers=4)
 
   begin = config["load"]["begin_step"]
   end = config["load"]["end_step"]

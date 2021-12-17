@@ -68,6 +68,12 @@ if __name__ == "__main__":
         data_p = data_p.to(device)
         data_n = data_n.to(device)
         label_a = label_a.to(device)
+        assert data_a.shape[1] == 3
+        assert data_p.shape[1] == 3
+        assert data_n.shape[1] == 3
+        assert data_a.shape[2] == data_a.shape[2] == 448
+        assert data_p.shape[2] == data_p.shape[2] == 448
+        assert data_n.shape[2] == data_n.shape[2] == 448
  
         # forward
         pred_a, feature_a = net(data_a)

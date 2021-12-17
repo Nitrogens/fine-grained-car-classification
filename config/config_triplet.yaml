@@ -7,10 +7,10 @@ train:
     decay: 0.1
     decay_step: 20
     loss: CrossEntropyLoss
-    margin: 0.3
+    margin: 5.0
     lambda_triplet: 0.1
   save:
-    save_path: "/home/xmj/ml-course/car/experiments/triplet-0.3-0.1"
+    save_path: "/home/xmj/ml-course/car/experiments/triplet-5.0-0.1"
     model_name: model
     step: 10
   data:
@@ -22,7 +22,7 @@ test:
       begin_step: 10
       end_step: 100
       steps: 10
-      load_path: "/home/xmj/ml-course/car/experiments/triplet-0.3-0.1"
+      load_path: "/home/xmj/ml-course/car/experiments/triplet-5.0-0.1"
       model_name: model
    data:
       image: "/home/xmj/ml-course/car/dataset"
