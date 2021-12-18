@@ -1,0 +1,5 @@
+---
+test:
+   data:
+      image: "/home/xmj/ml-course/car/dataset"
+      label: "/home/xmj/ml-course/car/dataset/test.label"

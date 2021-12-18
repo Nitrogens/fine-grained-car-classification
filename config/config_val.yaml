@@ -1,0 +1,15 @@
+---
+train:
+  data:
+    image: "/home/xmj/ml-course/car/dataset"
+    label: "/home/xmj/ml-course/car/dataset/3-fold"
+test:
+   load:
+      begin_step: 10
+      end_step: 40
+      steps: 10
+      load_path: "/home/xmj/ml-course/car/experiments/baseline-sgd-0.1"
+      model_name: model
+   data:
+      image: "//home/xmj/ml-course/car/dataset"
+      label: "/home/xmj/ml-course/car/dataset/3-fold"

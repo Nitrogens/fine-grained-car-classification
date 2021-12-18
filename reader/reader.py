@@ -19,8 +19,14 @@ transform = transforms.Compose([
 class loader(Dataset): 
   def __init__(self, path, root):
     self.lines = []
-    with open(path) as f:
-      self.lines = f.readlines()
+    if isinstance(path, list):
+        for i in path:
+            with open(i) as f:
+                line = f.readlines()
+                self.lines.extend(line)
+    else:
+        with open(path) as f:
+            self.lines = f.readlines()
     self.root = root
 
   def __len__(self):
@@ -37,7 +43,9 @@ class loader(Dataset):
     img = Image.open(image_path)
     img = transform(img)
 
-    return img, label
+    name = line[0].split("/")[-1]
+
+    return img, label, name
 
 def txtload(labelpath, imagepath, batch_size, shuffle=True, num_workers=0):
   dataset = loader(labelpath, imagepath)

@@ -9,15 +9,16 @@ import math
 import torchvision
 
 class FocalLoss(nn.Module):
-    def __init__(self, gamma=2):
+    def __init__(self, alpha=0.5, gamma=2):
         super().__init__()
         self.gamma = gamma
+        self.alpha = alpha
         self.ce = torch.nn.CrossEntropyLoss()
 
     def forward(self, input, target):
         logp = self.ce(input, target)
         p = torch.exp(-logp)
-        loss = (1 - p) ** self.gamma * logp
+        loss = self.alpha * (1 - p) ** self.gamma * logp
         return loss.mean()
 
 class ArcFaceMetric(nn.Module):
@@ -64,11 +65,11 @@ class ArcFaceMetric(nn.Module):
         return output
 
 class model(nn.Module):
-    def __init__(self):
+    def __init__(self, s=30.0, m=0.50, easy_margin=False):
         super(model, self).__init__()
         self.base_model = models.resnet50(pretrained=True)
         self.base_model.fc2 = nn.Linear(1000, 256)
-        self.arcface = ArcFaceMetric(256, 196)
+        self.arcface = ArcFaceMetric(256, 196, s, m, easy_margin)
 
     def forward(self, x, y, device, test=False):
         x = self.base_model(x)
