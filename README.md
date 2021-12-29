@@ -10,3 +10,5 @@ fine-grained-car-classification
 | ResNet50+TripletMarginLoss | 0.8865812709861958 | input_size=(448, 448), optim=SGD, lr=0.1, epochs=100, lr_decay_rate=0.1, lr_decay_step=10(by epochs), batch_size=32, margin=5.0, lambda_triplet=0.1 |
 | DenseNet201+AutoAugment+ArcFace+MoCo | 0.9477676905857481 | TBD |
 | DenseNet201+AutoAugment+ArcFace | 0.9446586245491855 | TBD |
+| DenseNet201+AutoAugment | 0.9235169755005597 | TBD |
+| DenseNet201 | 0.9109563487128467 | TBD |
